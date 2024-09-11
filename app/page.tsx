@@ -1,3 +1,4 @@
+import { updateKVStore } from '@/lib/updateKVStore';
 import { kv } from '@vercel/kv';
 
 async function getRewrites() {
@@ -14,6 +15,7 @@ async function getRewrites() {
 }
 
 export default async function Home() {
+  await updateKVStore();
   const rewrites = await getRewrites();
 
   return (

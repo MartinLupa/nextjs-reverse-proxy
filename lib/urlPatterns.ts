@@ -2,11 +2,11 @@ import { createClient } from "contentful";
 import fs from "fs";
 import path from "path";
 
-const contentfulClient = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID!,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
-  environment: process.env.CONTENTFUL_ENVIRONMENT!,
-});
+// const contentfulClient = createClient({
+//   space: process.env.CONTENTFUL_SPACE_ID!,
+//   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
+//   environment: process.env.CONTENTFUL_ENVIRONMENT!,
+// });
 
 export async function getUrlPatterns() {
   const patterns: Record<string, string> = {};
@@ -25,12 +25,12 @@ export async function getUrlPatterns() {
   }
 
   // Fetch patterns from Contentful
-  const entries = await contentfulClient.getEntries({
-    content_type: "urlPattern",
-  });
-  for (const entry of entries.items) {
-    patterns[entry.fields.path as string] = entry.fields.destination as string;
-  }
+  // const entries = await contentfulClient.getEntries({
+  //   content_type: "urlPattern",
+  // });
+  // for (const entry of entries.items) {
+  //   patterns[entry.fields.path as string] = entry.fields.destination as string;
+  // }
 
   return patterns;
 }
